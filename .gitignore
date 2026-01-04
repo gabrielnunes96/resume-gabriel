@@ -1,0 +1,10 @@
+# Personal photo (do not commit)
+me/*.jpg
+me/*.jpeg
+me/*.png
+
+# OS / tooling noise
+.DS_Store
+Thumbs.db
+*.log
+

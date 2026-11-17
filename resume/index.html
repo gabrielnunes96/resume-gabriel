@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gabriel Nunes Campos — Full Stack Developer</title>
+  <title>Gabriel Nunes Campos — Back-end .NET Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -415,52 +415,62 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Projects */
+    .project { margin-bottom: 16px; }
+    .project__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+    .project__name { font-weight: 600; color: var(--text-primary); }
+    .project__stack { font-size: 0.85rem; color: var(--text-muted); }
+    .project__link { font-size: 0.85rem; color: var(--accent-primary); text-decoration: none; }
+    .project__desc { color: var(--text-secondary); font-size: 0.95rem; margin-top: 4px; }
+
+    /* Header text per language */
+    html[lang="en"] .i-pt, html[lang="pt-BR"] .i-en { display: none; }
+
     /* Print styles */
+    @page { size: A4; margin: 8mm 12mm 6mm; }
     @media print {
-      body {
-        background: white;
-        color: #1a1a1a;
-      }
-      
-      .bg-pattern { display: none; }
-      
-      .container {
-        max-width: 100%;
-        padding: 20mm;
-      }
-      
-      .header__name {
-        background: none;
-        -webkit-text-fill-color: #1a1a1a;
-        color: #1a1a1a;
-      }
-      
-      .lang-switch { display: none; }
-      
-      .highlight-card,
-      .skill-category {
-        border-color: #e5e5e5;
-        background: #f9f9f9;
-      }
-      
-      .highlight-card__value {
-        background: none;
-        -webkit-text-fill-color: #0891b2;
-        color: #0891b2;
-      }
-      
-      .section-title,
-      .accent-primary,
-      .job__company,
-      .education-item__school,
-      a {
-        color: #0891b2 !important;
-      }
-      
-      .metric {
-        background: #e0f7fa;
-        color: #0891b2;
-      }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: white; color: #1a1a1a; font-size: 9.2pt; line-height: 1.34; }
+      .bg-pattern, .lang-switch { display: none; }
+      .locale.active { animation: none; }
+      .container { max-width: 100%; padding: 0; }
+      .header { margin-bottom: 12px; padding-bottom: 10px; border-color: #ddd; }
+      .header__name { font-size: 20pt; margin-bottom: 0; background: none; -webkit-text-fill-color: #111; color: #111; }
+      .header__title { font-size: 11pt; margin-bottom: 6px; color: #333; }
+      .header__contact { gap: 2px 16px; font-size: 8.6pt; color: #444; }
+      .header__contact-item svg { width: 11px; height: 11px; flex-basis: 11px; color: #666; }
+      section { margin-bottom: 9px; }
+      .section-title { font-size: 8.4pt; margin-bottom: 6px; color: #0e7490 !important; }
+      .section-title::after { background: #cfe9ee; }
+      .summary { font-size: 9.6pt; line-height: 1.45; color: #222; }
+      .summary strong, .job__list strong { color: #111; font-weight: 600; }
+      .highlights { grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px; }
+      .highlight-card { padding: 5px 8px; border-radius: 8px; border-color: #e3e3e3; background: #f7fafb; }
+      .highlight-card__value { font-size: 13pt; background: none; -webkit-text-fill-color: #0e7490; color: #0e7490; }
+      .highlight-card__label { font-size: 7.6pt; color: #555; margin-top: 0; }
+      .job { margin-bottom: 9px; padding-left: 14px; break-inside: avoid; }
+      .job::before { top: 6px; width: 6px; height: 6px; box-shadow: none; background: #0e7490; }
+      .job::after { display: none; }
+      .job__header { margin-bottom: 0; }
+      .job__title { font-size: 10.4pt; color: #111; }
+      .job__meta { font-size: 8.4pt; margin-bottom: 3px; color: #666; }
+      .job__list li { font-size: 9.1pt; margin-bottom: 1px; padding-left: 14px; color: #222; }
+      .metric { background: #e6f6f9; color: #0e7490; padding: 0 4px; font-size: 0.86em; }
+      .project { margin-bottom: 6px; break-inside: avoid; }
+      .project__name { color: #111; }
+      .project__stack, .project__link { font-size: 8.4pt; }
+      .project__desc { font-size: 9.1pt; margin-top: 1px; color: #222; }
+      .skills-grid { grid-template-columns: 1fr; gap: 2px; }
+      .skill-category { display: flex; gap: 8px; align-items: baseline; padding: 0; border: none; background: none; }
+      .skill-category__title { flex: 0 0 34mm; font-size: 7.8pt; margin-bottom: 0; color: #555; }
+      .skill-tags { display: block; font-size: 9.2pt; color: #222; }
+      .skill-tag { display: inline; padding: 0; border: none; background: none; font-size: inherit; color: #222; }
+      .skill-tag--primary { background: none; color: #111; font-weight: 600; }
+      .skill-tag:not(:last-child)::after { content: " · "; color: #999; font-weight: 400; }
+      .education-item { padding: 1px 0; border: none; }
+      .education-item__title { color: #111; }
+      .education-item__year { font-size: 8.4pt; }
+      .job__company, .education-item__school, a { color: #0e7490 !important; text-decoration: none; }
     }
 
     /* Responsive */
@@ -491,13 +501,13 @@
   <div class="container">
     <header class="header">
       <h1 class="header__name">Gabriel Nunes Campos</h1>
-      <p class="header__title">Full Stack Developer • Payments & FinTech</p>
+      <p class="header__title"><span class="i-en">Back-end .NET Developer • Payments</span><span class="i-pt">Desenvolvedor Back-end .NET • Meios de pagamento</span></p>
       <div class="header__contact">
         <span class="header__contact-item">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
           </svg>
-          Belo Horizonte, Brazil (Remote)
+          <span class="i-en">Belo Horizonte, Brazil (Remote)</span><span class="i-pt">Belo Horizonte, MG (Remoto)</span>
         </span>
         <span class="header__contact-item">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -509,13 +519,19 @@
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M20.45 20.45h-3.55v-5.55c0-1.32-.02-3.02-1.84-3.02-1.84 0-2.12 1.44-2.12 2.93v5.64H9.4V9h3.41v1.56h.05c.47-.9 1.64-1.84 3.38-1.84 3.62 0 4.29 2.38 4.29 5.47v6.26zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.13-.92 2.06-2.06 2.06zM7.12 20.45H3.56V9h3.56v11.45z"/>
           </svg>
-          <a href="https://linkedin.com/in/gabriel-nunes-304024126" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://linkedin.com/in/gabriel-nunes-304024126" target="_blank" rel="noreferrer">linkedin.com/in/gabriel-nunes-304024126</a>
         </span>
         <span class="header__contact-item">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 .5C5.73.5.75 5.7.75 12.2c0 5.2 3.44 9.6 8.2 11.16.6.12.82-.27.82-.6 0-.3-.01-1.08-.02-2.12-3.34.75-4.04-1.67-4.04-1.67-.55-1.43-1.34-1.8-1.34-1.8-1.1-.78.08-.76.08-.76 1.22.09 1.86 1.3 1.86 1.3 1.08 1.92 2.83 1.36 3.52 1.04.11-.8.42-1.36.76-1.67-2.66-.32-5.46-1.38-5.46-6.13 0-1.36.46-2.47 1.22-3.34-.12-.31-.53-1.57.12-3.27 0 0 1-.33 3.3 1.27.96-.28 1.98-.42 3-.43 1.02.01 2.04.15 3 .43 2.3-1.6 3.3-1.27 3.3-1.27.65 1.7.24 2.96.12 3.27.76.87 1.22 1.98 1.22 3.34 0 4.77-2.8 5.8-5.47 6.12.43.39.81 1.15.81 2.31 0 1.67-.02 3.01-.02 3.42 0 .33.22.72.83.6 4.75-1.56 8.18-5.96 8.18-11.16C23.25 5.7 18.27.5 12 .5z"/>
           </svg>
-          <a href="https://github.com/gabrielnunes96" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://github.com/gabrielnunes96" target="_blank" rel="noreferrer">github.com/gabrielnunes96</a>
+        </span>
+        <span class="header__contact-item">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3.9 12a3.1 3.1 0 0 1 3.1-3.1h4V7H7a5 5 0 0 0 0 10h4v-1.9H7A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8v2zm9-6h-4v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10z"/>
+          </svg>
+          <a href="https://gabrielnunes96.github.io/resume-gabriel/" target="_blank" rel="noreferrer">gabrielnunes96.github.io/resume-gabriel</a>
         </span>
       </div>
     </header>
@@ -527,29 +543,24 @@
 
     <!-- ═══════════════ ENGLISH ═══════════════ -->
     <main id="en" class="locale active" lang="en">
-      
+
       <section>
         <h2 class="section-title">Professional Summary</h2>
-        <p class="summary">
-          <strong>Full Stack Developer</strong> with <strong>3+ years</strong> in the <strong>payments and FinTech industry</strong>, 
-          building high-throughput microservices and scalable applications that process <strong>millions of transactions monthly</strong> 
-          for major card networks (Visa, MasterCard). Proven track record of <strong>reducing processing time by 50%+</strong> 
-          through performance optimization. Experienced with <strong>.NET/C#, Node.js, Vue.js, SQL Server, PostgreSQL, AWS, and Azure DevOps</strong>. 
-        </p>
+        <p class="summary"><strong>Back-end .NET developer</strong> with <strong>4+ years in payments</strong>, building integrations with <strong>Visa and Mastercard</strong> for reconciliation, clearing, disputes and chargebacks. Cut daily reconciliation from 8–10h to 3–5h and single-handedly migrated the disputes robot to the internal card-network API with <strong>530+ automated tests</strong>. I take code to production with <strong>Azure DevOps, Docker and AWS</strong>, and use AI in the development workflow with process and review.</p>
       </section>
 
       <div class="highlights">
         <div class="highlight-card">
+          <div class="highlight-card__value">4+</div>
+          <div class="highlight-card__label">Years in Payments</div>
+        </div>
+        <div class="highlight-card">
           <div class="highlight-card__value">50%+</div>
-          <div class="highlight-card__label">Processing Time Reduced</div>
+          <div class="highlight-card__label">Less Reconciliation Time</div>
         </div>
         <div class="highlight-card">
-          <div class="highlight-card__value">100K+</div>
-          <div class="highlight-card__label">Daily Records Processed</div>
-        </div>
-        <div class="highlight-card">
-          <div class="highlight-card__value">3+</div>
-          <div class="highlight-card__label">Years in FinTech</div>
+          <div class="highlight-card__value">530+</div>
+          <div class="highlight-card__label">Tests in One Migration</div>
         </div>
         <div class="highlight-card">
           <div class="highlight-card__value">1M+</div>
@@ -567,12 +578,11 @@
           </div>
           <div class="job__meta">Mar 2025 – Present • Remote</div>
           <ul class="job__list">
-            <li>Led POC development of a <strong>Transaction Reconciliation System</strong> that reduced batch processing time from <span class="metric">8-10 hours → 3-5 hours</span> (50%+ improvement) handling <span class="metric">50K-100K records/day</span></li>
-            <li>Architected and optimized <strong>multi-threaded .NET applications</strong> for high-throughput payment processing across clients handling <span class="metric">millions of transactions/month</span></li>
-            <li>Designed and maintained <strong>complex SQL stored procedures, views, and functions</strong> with advanced indexing strategies and execution plan optimization</li>
-            <li>Built and maintained <strong>distributed microservices</strong> integrated with Visa and MasterCard APIs for clearing and dispute management</li>
-            <li>Configured <strong>AWS infrastructure (EC2, VPC)</strong> and implemented <strong>CI/CD pipelines</strong> in Azure DevOps for automated deployments</li>
-            <li>Collaborated in a <strong>cross-functional team of 10</strong> using Agile/Scrum methodologies</li>
+            <li>Single-handedly migrated the <strong>disputes robot</strong> from the Mastercard SDK (with vulnerable packages) to the internal <strong>card-network API</strong>: <span class="metric">22 operations</span> across the V6 and Extended APIs, legacy routes kept, one JWT token shared across threads, and <span class="metric">279 + 253 unit tests</span> (the robot had 1)</li>
+            <li>Led the POC of a <strong>Transaction Reconciliation System</strong> that cut batch processing from <span class="metric">8–10h → 3–5h</span> (50%+) at <span class="metric">50K–100K records/day</span></li>
+            <li>Tuned <strong>multi-threaded .NET applications</strong> for payment processing (millions of transactions/month)</li>
+            <li>Designed <strong>SQL Server stored procedures, views and functions</strong> with indexing and execution-plan optimization</li>
+            <li>Configured <strong>AWS (EC2, VPC)</strong> and <strong>CI/CD pipelines in Azure DevOps</strong> for automated deployments</li>
           </ul>
         </div>
 
@@ -583,10 +593,9 @@
           </div>
           <div class="job__meta">May 2024 – Mar 2025 • Belo Horizonte, Brazil</div>
           <ul class="job__list">
-            <li>Developed full-stack features using <strong>Vue.js, Node.js, .NET, Entity Framework</strong> and SQL Server</li>
-            <li>Built <strong>automation microservices</strong> for Visa/MasterCard file ingestion, parsing, and reconciliation</li>
-            <li>Implemented <strong>RESTful API integrations</strong> with third-party payment providers</li>
-            <li>Contributed to dispute-management platform serving multiple financial institutions</li>
+            <li>Developed full-stack features with <strong>Vue.js, Node.js, .NET, Entity Framework</strong> and SQL Server, test-first (<strong>TDD</strong>)</li>
+            <li>Built <strong>automation services</strong> for Visa/Mastercard file ingestion, parsing and reconciliation, with unit tests</li>
+            <li>Implemented <strong>REST integrations</strong> with third-party payment providers, secured with <strong>OAuth 2.0</strong></li>
           </ul>
         </div>
 
@@ -597,11 +606,24 @@
           </div>
           <div class="job__meta">Apr 2022 – May 2024 • Brazil</div>
           <ul class="job__list">
-            <li>Built production-grade <strong>file reconciliation processes</strong> for VISA transaction validation</li>
-            <li>Developed front-end components with <strong>Vue.js</strong> following component-based architecture</li>
-            <li>Created automated workflows via <strong>Windows Task Scheduler</strong> for batch processing</li>
-            <li>Promoted from Trainee → Junior → Mid-Level within <span class="metric">3 years</span> based on performance</li>
+            <li>Built production <strong>file reading and reconciliation</strong> processes for Visa transactions</li>
+            <li>Developed front-end components with <strong>Vue.js</strong></li>
+            <li>Automated batch routines with Windows Task Scheduler; promoted Trainee → Junior → Mid-Level in <span class="metric">3 years</span></li>
           </ul>
+        </div>
+
+      </section>
+
+      <section>
+        <h2 class="section-title">Personal Projects</h2>
+
+        <div class="project">
+          <div class="project__head"><span class="project__name">DevFlow</span> <span class="project__stack">Python • Claude Code • CI/CD</span> <a class="project__link" href="https://github.com/gabrielnunes96/dev-flow" target="_blank" rel="noreferrer">github.com/gabrielnunes96/dev-flow</a></div>
+          <p class="project__desc">Plugin marketplace that takes a request to a PR: functional and technical specs, plan, task-by-task implementation with code and security review, validation and CI/CD templates (Azure Pipelines, GitHub Actions, GitLab), with human approval gates.</p>
+        </div>
+        <div class="project">
+          <div class="project__head"><span class="project__name">ToFalany</span> <span class="project__stack">TypeScript • Electron • React • Node.js • Docker</span> <a class="project__link" href="https://github.com/gabrielnunes96/tofalany" target="_blank" rel="noreferrer">github.com/gabrielnunes96/tofalany</a></div>
+          <p class="project__desc">Self-hosted desktop app for text, voice, video and screen sharing: Node.js + SQLite + LiveKit server in Docker Compose, VPS deploy with HTTPS, Playwright e2e tests and Windows/Linux installers built on GitHub Actions.</p>
         </div>
       </section>
 
@@ -609,61 +631,70 @@
         <h2 class="section-title">Technical Skills</h2>
         <div class="skills-grid">
           <div class="skill-category">
-            <div class="skill-category__title">Languages & Frameworks</div>
+            <div class="skill-category__title">Back-end</div>
             <div class="skill-tags">
               <span class="skill-tag skill-tag--primary">C# / .NET</span>
-              <span class="skill-tag skill-tag--primary">Node.js</span>
-              <span class="skill-tag skill-tag--primary">Vue.js</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag skill-tag--primary">ASP.NET Core</span>
               <span class="skill-tag">Entity Framework</span>
               <span class="skill-tag">LINQ</span>
-              <span class="skill-tag">HTML/CSS</span>
-              <span class="skill-tag">RESTful APIs</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">TypeScript</span>
             </div>
           </div>
           <div class="skill-category">
             <div class="skill-category__title">Databases</div>
             <div class="skill-tags">
               <span class="skill-tag skill-tag--primary">SQL Server</span>
-              <span class="skill-tag skill-tag--primary">PostgreSQL</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">SQLite</span>
               <span class="skill-tag">MongoDB</span>
               <span class="skill-tag">Stored Procedures</span>
               <span class="skill-tag">Query Optimization</span>
             </div>
           </div>
           <div class="skill-category">
-            <div class="skill-category__title">Cloud & DevOps</div>
+            <div class="skill-category__title">DevOps & Cloud</div>
             <div class="skill-tags">
-              <span class="skill-tag skill-tag--primary">AWS (EC2, VPC)</span>
               <span class="skill-tag skill-tag--primary">Azure DevOps</span>
-              <span class="skill-tag">Docker</span>
-              <span class="skill-tag">CI/CD Pipelines</span>
+              <span class="skill-tag skill-tag--primary">Docker</span>
+              <span class="skill-tag">AWS (EC2, VPC)</span>
+              <span class="skill-tag">CI/CD</span>
+              <span class="skill-tag">GitHub Actions</span>
+              <span class="skill-tag">Linux</span>
               <span class="skill-tag">Git</span>
             </div>
           </div>
           <div class="skill-category">
-            <div class="skill-category__title">Practices & Domain</div>
+            <div class="skill-category__title">Practices & Front-end</div>
             <div class="skill-tags">
+              <span class="skill-tag skill-tag--primary">Automated Testing (TDD)</span>
+              <span class="skill-tag">OAuth 2.0 / JWT</span>
+              <span class="skill-tag">Secure Development</span>
               <span class="skill-tag">Microservices</span>
-              <span class="skill-tag">Agile / Scrum</span>
-              <span class="skill-tag">Payment Processing</span>
-              <span class="skill-tag">FinTech</span>
-              <span class="skill-tag">Transaction Reconciliation</span>
-              <span class="skill-tag">Performance Tuning</span>
+              <span class="skill-tag">AI-assisted Development</span>
+              <span class="skill-tag">Vue.js</span>
+              <span class="skill-tag">React</span>
             </div>
           </div>
         </div>
       </section>
 
       <section>
-        <h2 class="section-title">Education & Certifications</h2>
+        <h2 class="section-title">Education, Certifications & Languages</h2>
         <div class="education-item">
           <div>
             <span class="education-item__title">Associate Degree in Systems Analysis & Development</span>
-            <span class="education-item__school"> — Estácio de Sá University</span>
+            <span class="education-item__school"> — Estácio</span>
           </div>
           <span class="education-item__year">2022 – 2024</span>
+        </div>
+        <div class="education-item">
+          <div>
+            <span class="education-item__title">Advanced Secure Software Development</span>
+            <span class="education-item__school"> — Udemy</span>
+          </div>
+          <span class="education-item__year">2025</span>
         </div>
         <div class="education-item">
           <div>
@@ -672,35 +703,33 @@
           </div>
           <span class="education-item__year">2024</span>
         </div>
+        <div class="education-item">
+          <div><span class="education-item__title">Languages</span><span class="education-item__school"> — Portuguese: native • English: upper-intermediate (B2)</span></div>
+        </div>
       </section>
 
     </main>
 
     <!-- ═══════════════ PORTUGUÊS ═══════════════ -->
     <main id="pt" class="locale" lang="pt-BR">
-      
+
       <section>
         <h2 class="section-title">Resumo Profissional</h2>
-        <p class="summary">
-          <strong>Desenvolvedor Full Stack</strong> com <strong>3+ anos</strong> de experiência no setor de <strong>meios de pagamento e FinTech</strong>, 
-          desenvolvendo microsserviços de alta performance e aplicações escaláveis que processam <strong>milhões de transações mensais</strong> 
-          para grandes bandeiras (Visa, MasterCard). Histórico comprovado de <strong>redução de 50%+ no tempo de processamento</strong> 
-          através de otimização de performance. Experiência com <strong>.NET/C#, Node.js, Vue.js, SQL Server, PostgreSQL, AWS e Azure DevOps</strong>. 
-        </p>
+        <p class="summary"><strong>Desenvolvedor back-end .NET</strong> com <strong>4+ anos em meios de pagamento</strong>, construindo integrações com <strong>Visa e Mastercard</strong> para conciliação, clearing, disputas e chargeback. Reduzi a conciliação diária de 8–10h para 3–5h e migrei sozinho o robô de disputas para a API de bandeira interna, com <strong>530+ testes automatizados</strong>. Levo o código até a produção com <strong>Azure DevOps, Docker e AWS</strong>, e uso IA no fluxo de desenvolvimento com processo e revisão.</p>
       </section>
 
       <div class="highlights">
         <div class="highlight-card">
+          <div class="highlight-card__value">4+</div>
+          <div class="highlight-card__label">Anos em Pagamentos</div>
+        </div>
+        <div class="highlight-card">
           <div class="highlight-card__value">50%+</div>
-          <div class="highlight-card__label">Redução no Tempo de Processamento</div>
+          <div class="highlight-card__label">Menos Tempo de Conciliação</div>
         </div>
         <div class="highlight-card">
-          <div class="highlight-card__value">100K+</div>
-          <div class="highlight-card__label">Registros Processados/Dia</div>
-        </div>
-        <div class="highlight-card">
-          <div class="highlight-card__value">3+</div>
-          <div class="highlight-card__label">Anos em FinTech</div>
+          <div class="highlight-card__value">530+</div>
+          <div class="highlight-card__label">Testes numa Migração</div>
         </div>
         <div class="highlight-card">
           <div class="highlight-card__value">1M+</div>
@@ -718,12 +747,11 @@
           </div>
           <div class="job__meta">Mar 2025 – Atual • Remoto</div>
           <ul class="job__list">
-            <li>Liderou desenvolvimento de POC do <strong>Sistema de Conciliação de Transações</strong> que reduziu tempo de processamento de <span class="metric">8-10 horas → 3-5 horas</span> (melhoria de 50%+) processando <span class="metric">50K-100K registros/dia</span></li>
-            <li>Arquitetou e otimizou <strong>aplicações .NET multi-threaded</strong> para processamento de pagamentos de alta performance para clientes que transacionam <span class="metric">milhões de transações/mês</span></li>
-            <li>Projetou e manteve <strong>stored procedures, views e funções SQL complexas</strong> com estratégias avançadas de indexação e otimização de planos de execução</li>
-            <li>Construiu e manteve <strong>microsserviços distribuídos</strong> integrados com APIs Visa e MasterCard para clearing e gestão de disputas</li>
-            <li>Configurou <strong>infraestrutura AWS (EC2, VPC)</strong> e implementou <strong>pipelines CI/CD</strong> no Azure DevOps para deploys automatizados</li>
-            <li>Colaborou em <strong>time multidisciplinar de 10 pessoas</strong> utilizando metodologias Ágeis/Scrum</li>
+            <li>Migrei sozinho o <strong>robô de disputas</strong> do SDK da Mastercard (com pacotes vulneráveis) para a <strong>API de bandeira</strong> interna: <span class="metric">22 operações</span> nas APIs V6 e Extended, rotas antigas mantidas, um token JWT compartilhado entre as threads e <span class="metric">279 + 253 testes unitários</span> (o robô tinha 1)</li>
+            <li>Liderei a POC do <strong>Sistema de Conciliação de Transações</strong>, que reduziu o processamento em lote de <span class="metric">8–10h → 3–5h</span> (50%+) com <span class="metric">50K–100K registros/dia</span></li>
+            <li>Otimizei <strong>aplicações .NET multi-threaded</strong> de processamento de pagamentos (milhões de transações/mês)</li>
+            <li>Projetei <strong>stored procedures, views e funções no SQL Server</strong> com indexação e otimização de planos de execução</li>
+            <li>Configurei <strong>AWS (EC2, VPC)</strong> e <strong>pipelines de CI/CD no Azure DevOps</strong> para deploys automatizados</li>
           </ul>
         </div>
 
@@ -734,10 +762,9 @@
           </div>
           <div class="job__meta">Mai 2024 – Mar 2025 • Belo Horizonte, MG</div>
           <ul class="job__list">
-            <li>Desenvolveu funcionalidades full-stack usando <strong>Vue.js, Node.js, .NET, Entity Framework</strong> e SQL Server</li>
-            <li>Construiu <strong>microsserviços de automação</strong> para ingestão, parsing e conciliação de arquivos Visa/MasterCard</li>
-            <li>Implementou <strong>integrações de APIs RESTful</strong> com provedores de pagamento terceiros</li>
-            <li>Contribuiu para plataforma de gestão de disputas servindo múltiplas instituições financeiras</li>
+            <li>Desenvolvi funcionalidades full-stack com <strong>Vue.js, Node.js, .NET, Entity Framework</strong> e SQL Server, com testes desde o início (<strong>TDD</strong>)</li>
+            <li>Construí <strong>serviços de automação</strong> para ingestão e conciliação de arquivos Visa/Mastercard, com testes unitários</li>
+            <li>Implementei <strong>integrações REST</strong> com provedores de pagamento, protegidas com <strong>OAuth 2.0</strong></li>
           </ul>
         </div>
 
@@ -748,11 +775,24 @@
           </div>
           <div class="job__meta">Abr 2022 – Mai 2024 • Brasil</div>
           <ul class="job__list">
-            <li>Construiu <strong>processos de conciliação de arquivos</strong> em produção para validação de transações VISA</li>
-            <li>Desenvolveu componentes front-end com <strong>Vue.js</strong> seguindo arquitetura baseada em componentes</li>
-            <li>Criou workflows automatizados via <strong>Windows Task Scheduler</strong> para processamento em lote</li>
-            <li>Promovido de Trainee → Júnior → Pleno em <span class="metric">3 anos</span> baseado em performance</li>
+            <li>Construí processos de <strong>leitura e conciliação de arquivos</strong> Visa em produção</li>
+            <li>Desenvolvi componentes front-end em <strong>Vue.js</strong></li>
+            <li>Automatizei rotinas em lote com o Windows Task Scheduler; promovido de Trainee → Júnior → Pleno em <span class="metric">3 anos</span></li>
           </ul>
+        </div>
+
+      </section>
+
+      <section>
+        <h2 class="section-title">Projetos Pessoais</h2>
+
+        <div class="project">
+          <div class="project__head"><span class="project__name">DevFlow</span> <span class="project__stack">Python • Claude Code • CI/CD</span> <a class="project__link" href="https://github.com/gabrielnunes96/dev-flow" target="_blank" rel="noreferrer">github.com/gabrielnunes96/dev-flow</a></div>
+          <p class="project__desc">Marketplace de plugins que leva uma demanda até o PR: especificação funcional e técnica, plano, implementação tarefa a tarefa com revisão de código e de segurança, validação e modelos de CI/CD (Azure Pipelines, GitHub Actions, GitLab), com aprovação humana nos pontos-chave.</p>
+        </div>
+        <div class="project">
+          <div class="project__head"><span class="project__name">ToFalany</span> <span class="project__stack">TypeScript • Electron • React • Node.js • Docker</span> <a class="project__link" href="https://github.com/gabrielnunes96/tofalany" target="_blank" rel="noreferrer">github.com/gabrielnunes96/tofalany</a></div>
+          <p class="project__desc">App desktop com servidor próprio para texto, voz, vídeo e transmissão de tela: servidor Node.js + SQLite + LiveKit em Docker Compose, deploy em VPS com HTTPS, testes e2e com Playwright e instaladores Windows/Linux gerados no GitHub Actions.</p>
         </div>
       </section>
 
@@ -760,61 +800,70 @@
         <h2 class="section-title">Competências Técnicas</h2>
         <div class="skills-grid">
           <div class="skill-category">
-            <div class="skill-category__title">Linguagens & Frameworks</div>
+            <div class="skill-category__title">Back-end</div>
             <div class="skill-tags">
               <span class="skill-tag skill-tag--primary">C# / .NET</span>
-              <span class="skill-tag skill-tag--primary">Node.js</span>
-              <span class="skill-tag skill-tag--primary">Vue.js</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag skill-tag--primary">ASP.NET Core</span>
               <span class="skill-tag">Entity Framework</span>
               <span class="skill-tag">LINQ</span>
-              <span class="skill-tag">HTML/CSS</span>
-              <span class="skill-tag">APIs RESTful</span>
+              <span class="skill-tag">APIs REST</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">TypeScript</span>
             </div>
           </div>
           <div class="skill-category">
             <div class="skill-category__title">Bancos de Dados</div>
             <div class="skill-tags">
               <span class="skill-tag skill-tag--primary">SQL Server</span>
-              <span class="skill-tag skill-tag--primary">PostgreSQL</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">SQLite</span>
               <span class="skill-tag">MongoDB</span>
               <span class="skill-tag">Stored Procedures</span>
               <span class="skill-tag">Otimização de Queries</span>
             </div>
           </div>
           <div class="skill-category">
-            <div class="skill-category__title">Cloud & DevOps</div>
+            <div class="skill-category__title">DevOps & Cloud</div>
             <div class="skill-tags">
-              <span class="skill-tag skill-tag--primary">AWS (EC2, VPC)</span>
               <span class="skill-tag skill-tag--primary">Azure DevOps</span>
-              <span class="skill-tag">Docker</span>
-              <span class="skill-tag">Pipelines CI/CD</span>
+              <span class="skill-tag skill-tag--primary">Docker</span>
+              <span class="skill-tag">AWS (EC2, VPC)</span>
+              <span class="skill-tag">CI/CD</span>
+              <span class="skill-tag">GitHub Actions</span>
+              <span class="skill-tag">Linux</span>
               <span class="skill-tag">Git</span>
             </div>
           </div>
           <div class="skill-category">
-            <div class="skill-category__title">Práticas & Domínio</div>
+            <div class="skill-category__title">Práticas & Front-end</div>
             <div class="skill-tags">
+              <span class="skill-tag skill-tag--primary">Testes Automatizados (TDD)</span>
+              <span class="skill-tag">OAuth 2.0 / JWT</span>
+              <span class="skill-tag">Desenvolvimento Seguro</span>
               <span class="skill-tag">Microsserviços</span>
-              <span class="skill-tag">Agile / Scrum</span>
-              <span class="skill-tag">Processamento de Pagamentos</span>
-              <span class="skill-tag">FinTech</span>
-              <span class="skill-tag">Conciliação de Transações</span>
-              <span class="skill-tag">Tuning de Performance</span>
+              <span class="skill-tag">IA no Desenvolvimento</span>
+              <span class="skill-tag">Vue.js</span>
+              <span class="skill-tag">React</span>
             </div>
           </div>
         </div>
       </section>
 
       <section>
-        <h2 class="section-title">Formação Acadêmica</h2>
+        <h2 class="section-title">Formação, Certificações e Idiomas</h2>
         <div class="education-item">
           <div>
             <span class="education-item__title">Tecnólogo em Análise e Desenvolvimento de Sistemas</span>
-            <span class="education-item__school"> — Estácio de Sá</span>
+            <span class="education-item__school"> — Estácio</span>
           </div>
           <span class="education-item__year">2022 – 2024</span>
+        </div>
+        <div class="education-item">
+          <div>
+            <span class="education-item__title">Desenvolvimento Seguro de Software Avançado</span>
+            <span class="education-item__school"> — Udemy</span>
+          </div>
+          <span class="education-item__year">2025</span>
         </div>
         <div class="education-item">
           <div>
@@ -822,6 +871,9 @@
             <span class="education-item__school"> — freeCodeCamp</span>
           </div>
           <span class="education-item__year">2024</span>
+        </div>
+        <div class="education-item">
+          <div><span class="education-item__title">Idiomas</span><span class="education-item__school"> — Português: nativo • Inglês: intermediário-avançado (B2)</span></div>
         </div>
       </section>
 
